@@ -1,0 +1,36 @@
+<nav>
+    <ul class="navigations">
+        <li id="logo">
+            <img src="/static/images/logo.png" alt="sabka-bazaar">
+        </li>
+        <li class="hide-on-mobile">
+            <a href="#" id="home-nav" (click)="navClick('Home')">Home</a>
+        </li>
+        <li class="hide-on-mobile">
+            <a href="#" id="products-nav" (click)="navClick('Products')">Products</a>
+        </li>
+
+    </ul>
+    <ul class="actions">
+        <li>
+            <ul class="user-auth">
+                <li><a href="#" id="sign-in-nav">SignIn</a></li>
+                <li><a href="#" id="register-nav">Register</a></li>
+            </ul>
+
+        </li>
+        <li>
+            <div class="cursor-pointer" id="cart" (click)="openCart()">
+                <img src="/static/images/cart.svg" alt="cart">
+                <span>{{(cartItemIds$ | async)?.length}} Items</span>
+            </div>
+        </li>
+    </ul>
+</nav>
+<ng-container *ngIf="cartOpen$ | async as cartOpen">
+    <div id="cartModal" class="modal" [ngClass]="{'show':cartOpen}">
+        <section class="modal-content">
+            <bench-project-cart-details></bench-project-cart-details>
+        </section>
+    </div>=
+</ng-container>

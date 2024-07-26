@@ -1,0 +1,111 @@
+$white : #fff;
+$gray-backgroud : #eeeeee;
+$secondary-color : #d00056;
+
+
+
+:host {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: $gray-backgroud;
+    height: 100%;
+
+    .cart-header {
+        background-color: black;
+        color: white;
+        padding: 3%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1em;
+
+        .close {
+            font-size: 20px;
+        }
+    }
+
+    .cart-body {
+        overflow: auto;
+
+        .no-items {
+            text-align: center;
+            width: 50%;
+            margin: auto;
+
+            p {
+
+                font-size: .8em;
+            }
+        }
+    }
+
+    .cart-card {
+        width: 100%;
+        margin-bottom: 1em;
+        display: flex;
+
+        img {
+            width: 5em;
+        }
+
+        img+div {
+            flex: 1 0 auto;
+            background-color: white;
+            padding-left: .5em;
+            width: 50%;
+            padding-left: 1em;
+
+            .title {
+                margin-bottom: 1em;
+            }
+
+            .pricing {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding-right: 1em;
+            }
+
+            .item-count {
+                display: flex;
+                justify-content: space-evenly;
+                width: 12em;
+            }
+
+            .icon {
+                background-color: $secondary-color;
+                border-radius: 50%;
+                width: 1.5em;
+                color: white;
+                text-align: center;
+            }
+        }
+    }
+
+    .cart-tail {
+        display: flex;
+        align-items: center;
+        background-color: white;
+        padding: .5em;
+        justify-content: space-around;
+    }
+
+    .cart-footer {
+        text-align: center;
+        background-color: white;
+        padding: .5em;
+        margin-top: auto;
+
+        .checkout {
+            width: 100%;
+            text-align: center;
+
+            .proceed {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
+    }
+}

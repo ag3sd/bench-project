@@ -1,0 +1,12 @@
+<bench-project-nav></bench-project-nav>
+<div class="container" *ngIf="(currentScreen$ | async) as currentScreen ">
+    <ng-container *ngIf="currentScreen === Screens.Home">
+        <bench-project-home></bench-project-home>
+    </ng-container>
+    <ng-container *ngIf="currentScreen === Screens.Products">
+        <bench-project-products></bench-project-products>
+    </ng-container>
+</div>
+<footer>
+    Copyright 2011-2018 Sabka Bazaar Grocery Supplies Pvt Ltd
+</footer>

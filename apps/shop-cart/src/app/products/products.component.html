@@ -1,0 +1,50 @@
+<ng-container *ngIf="catogories$ | async as catogories">
+    <div class="show-on-mobile" id="mobile-catogory">
+        <select name="catogories" id="select-catogory">
+            <ng-container *ngFor="let catogory of catogories">
+                <option [value]="catogory.id" (click)="setCategory(catogory)"
+                    [selected]="catogory.id === (selectedCategory | async)">
+                    {{catogory.name}}
+                </option>
+            </ng-container>
+        </select>
+    </div>
+    <section id="product-page">
+        <aside id="side-menu" class="hide-on-mobile">
+            <ng-container *ngFor="let catogory of catogories">
+                <a [id]="catogory.id" [ngClass]="{'active':catogory.id === (selectedCategory | async)}"
+                    (click)="setCategory(catogory)" href="#">{{catogory.name}}</a>
+            </ng-container>
+        </aside>
+
+        <section id="catogory-content">
+            <ng-container *ngFor="let product of products$ | async">
+                <div class="card">
+                    <div class="title">
+                        <span>{{product.name}}</span>
+                    </div>
+                    <div class="card-body">
+                        <img [src]="product.imageURL" [alt]="product.name">
+                        <div>
+                            <p class="description">{{product.description}}</p>
+                            <button class="show-on-mobile action-btn buy-mobile" (click)="buy(product.id)">
+                                Buy Now @MRP Rs.{{product.price}}
+                            </button>
+                        </div>
+                        <div class="hide-on-mobile action" *ngIf="cartItems$ | async as cartItems">
+                            <span>MRP Rs.{{product.price}}</span>
+                            <ng-container *ngIf="cartItems[product.id]">
+                                <button class="item-added">Item added to Cart</button>
+                            </ng-container>
+                            <ng-container *ngIf="!cartItems[product.id]">
+                                <button class="action-btn buy" (click)="buy(product.id)">
+                                    Buy Now
+                                </button>
+                            </ng-container>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+        </section>
+    </section>
+</ng-container>
